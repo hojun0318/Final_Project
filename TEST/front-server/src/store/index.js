@@ -15,7 +15,7 @@ export default new Vuex.Store({
     createPersistedState()
   ],
   state: {
-    articles: [],
+    movies: [],
     token: null,
   },
   getters: {
@@ -24,17 +24,17 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    GET_ARTICLES(state, articles) {
-      state.articles = articles
+    GET_MOVIES(state, movies) {
+      state.movies = movies
     },
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
-      router.push({ name: 'ArticleView' })
+      router.push({ name: 'MovieView' })
     }
   },
   actions: {
-    getArticles(context) {
+    getMovies(context) {
       axios({
         method: 'get',
         url: `${API_URL}/api/v1/movies/`,
@@ -45,7 +45,7 @@ export default new Vuex.Store({
         .then((res) => {
           // console.log(res, context)
           // console.log(res.data)
-          context.commit('GET_ARTICLES', res.data)
+          context.commit('GET_MOVIES', res.data)
         })
         .catch((err) => {
           console.log(err)

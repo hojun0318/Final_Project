@@ -3,18 +3,18 @@
     <h1>WELCOME TO MVTI </h1>
     <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
     <hr>
-    <ArticleList/>
+    <MovieList/>
   </div>
 </template>
 
 <script>
-import ArticleList from '@/components/ArticleList'
+import MovieList from '@/components/MovieList'
 
 
 export default {
-  name: 'ArticleView',
+  name: 'MovieView',
   components: {
-    ArticleList,
+    MovieList,
   },
   computed:{
     isLogin() {
@@ -22,12 +22,12 @@ export default {
     }
   },
   created() {
-    this.getArticles()
+    this.getMovies()
   },
   methods: {
-    getArticles() {
+    getMovies() {
       if (this.isLogin === true) { 
-        this.$store.dispatch('getArticles')
+        this.$store.dispatch('getMovies')
       } else {
         alert('로그인이 필요한 서비스 입니다.')
         this.$router.push({ name: 'LogInView'})

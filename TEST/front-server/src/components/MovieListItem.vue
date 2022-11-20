@@ -5,12 +5,12 @@
         <img :src="this.movieURL" />
         <div class="card-body">
           <h5 class="text-center" style="font-weight: bold">
-            {{ article.title }}
+            {{ movie.title }}
           </h5>
           <div class="overview">
-            <p>{{ article.overview }}</p>
+            <p>{{ movie.overview }}</p>
           </div>
-          <router-link :to="{ name: 'DetailView', params: { id: article.id } }">
+          <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
             [DETAIL]
           </router-link>
         </div>
@@ -21,13 +21,13 @@
 
 <script>
 export default {
-  name: 'ArticleListItem',
+  name: 'MovieListItem',
   props: {
-    article: Object,
+    movie: Object,
   },
   computed: {
     movieURL() {
-      return `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${this.article.poster_path}`
+      return `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${this.movie.poster_path}`
     },
   },
 }

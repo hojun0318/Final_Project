@@ -51,7 +51,7 @@ export default {
       })
         .then((res) => {
           console.log(res)
-          this.$router.push({ name: 'ArticleView' })
+          this.$router.push({ name: 'MovieView' })
         })
         .catch((err) => {
           console.log(err)

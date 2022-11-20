@@ -2,10 +2,10 @@
   <div class="py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-md-6 g-4">
-        <ArticleListItem
-          v-for="article in articles"
-          :key="article.id"
-          :article="article"
+        <MovieListItem
+          v-for="movie in movies"
+          :key="movie.id"
+          :movie="movie"
         />
       </div>
     </div>
@@ -25,23 +25,23 @@
 ></script>
 
 <script>
-import ArticleListItem from '@/components/ArticleListItem'
+import MovieListItem from '@/components/MovieListItem'
 
 export default {
-  name: 'ArticleList',
+  name: 'MovieList',
   components: {
-    ArticleListItem
+    MovieListItem
   },
   computed: {
-    articles() {
-      return this.$store.state.articles
+    movies() {
+      return this.$store.state.movies
     }
   }
 }
 </script>
 
 <style>
-.article-list {
+.movie-list {
   text-align: start;
 }
 </style>
