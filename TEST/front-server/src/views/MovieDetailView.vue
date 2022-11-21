@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <h1>영화 정보</h1>
-    <!-- <img :src="this.movieInfoURL" class="card-img-top" alt="..." /> -->
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img :src="poster_path" class="img-fluid rounded-start" alt="그림" style="height: 100%" />
+    </div>
     <p>영화 제목 : {{ movieInfo?.title }}</p>
     <p>줄거리 : {{ movieInfo?.overview }}</p>
+    
     <hr>
     <h1>후기 목록</h1>
     <p>제목 : {{ review?.title}}</p>
@@ -25,13 +27,14 @@ export default {
   data() {
     return {
       movieInfo: null,
-      review: [],
+      review: null,
+      poster_path: null,
     }
   },
+  props: {
+  },
   computed: {
-    movieInfoURL() {
-      return `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${this.movieInfo.poster_path}`
-    },
+    
   },
   created() {
     this.getMovieDetail()
@@ -46,6 +49,7 @@ export default {
         .then((res) => {
           console.log(res)
           this.movieInfo = res.data
+          this.poster_path = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.movieInfo.poster_path}`
         })
         .catch((err) => {
           console.log(err)

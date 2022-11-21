@@ -17,6 +17,7 @@ export default new Vuex.Store({
   state: {
     movies: [],
     token: null,
+    bestMovieList: [],
   },
   getters: {
     isLogin(state) {
@@ -24,6 +25,10 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    GET_BEST_MOVIE_LIST(state, bestMovieList) {
+      console.log(bestMovieList)
+      state.bestMovieList = bestMovieList
+    },
     GET_MOVIES(state, movies) {
       state.movies = movies
     },

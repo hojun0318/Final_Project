@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MovieView from '@/views/MovieView'
+import RandomView from '@/views/RandomView'
 import CreateView from '@/views/CreateView'
 import MovieDetailView from '@/views/MovieDetailView'
 import SignUpView from '@/views/SignUpView'
@@ -38,6 +39,11 @@ const routes = [
     path: '/:id',
     name: 'MovieDetailView',
     component: MovieDetailView,
+  },
+  {
+    path: '/random',
+    name: 'random',
+    component: RandomView
   },
 
 ]

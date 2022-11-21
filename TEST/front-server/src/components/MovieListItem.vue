@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     movieURL() {
-      return `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${this.movie.poster_path}`
+      return `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.movie.poster_path}`
     },
   },
 }
