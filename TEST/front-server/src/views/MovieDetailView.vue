@@ -5,12 +5,6 @@
     </div>
     <p>영화 제목 : {{ movieInfo?.title }}</p>
     <p>줄거리 : {{ movieInfo?.overview }}</p>
-    
-    <hr>
-    <h1>후기 목록</h1>
-    <p>제목 : {{ review?.title}}</p>
-    <p>내용 : {{ review?.content}}</p>
-    <p>순위 : {{ review?.rank}}</p>
     <router-link :to="{ name: 'MovieView',}">
       [BACK]
     </router-link>
@@ -38,7 +32,6 @@ export default {
   },
   created() {
     this.getMovieDetail()
-    this.getReviews()
   },
   methods: {
     getMovieDetail() {
@@ -55,19 +48,6 @@ export default {
           console.log(err)
         })
     },
-    getReviews() {
-      axios({
-        method: 'get',
-        url: `${API_URL}/api/v1/community/${this.$route.params.id}/reviews/`
-      })
-        .then((res) => {
-          console.log(res)
-          this.review = res.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
   },
 }
 </script>

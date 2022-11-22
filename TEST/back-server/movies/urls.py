@@ -13,4 +13,6 @@ urlpatterns = [
     path("<int:genre_pk>/genres/", views.movies_genre),
     # optional
     path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    # 개발자 영화 추천
+    path("recommend/", views.recommend_by_developer),
 ]

@@ -1,3 +1,5 @@
+import random
+from django.db.models import Q
 from .models import Movie, Genre
 from rest_framework import status
 from django.shortcuts import render
@@ -34,4 +36,11 @@ def movies_genre(request, genre_pk):
     genre = get_object_or_404(Genre, pk=genre_pk)
     movies = genre.movies.order_by('-popularity', '-release_date')[:100]
     serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+# 개발자 추천 영화
+@api_view(['GET'])
+def recommend_by_developer(request):
+    recommend_movies = get_list_or_404(Movie)
+    serializer = MovieListSerializer(recommend_movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)

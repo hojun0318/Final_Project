@@ -18,6 +18,7 @@ export default new Vuex.Store({
     movies: [],
     token: null,
     bestMovieList: [],
+    recommend_movies: [],
   },
   getters: {
     isLogin(state) {
@@ -26,11 +27,14 @@ export default new Vuex.Store({
   },
   mutations: {
     GET_BEST_MOVIE_LIST(state, bestMovieList) {
-      console.log(bestMovieList)
+      // console.log(bestMovieList)
       state.bestMovieList = bestMovieList
     },
     GET_MOVIES(state, movies) {
       state.movies = movies
+    },
+    GET_RECOMMEND(state, recommend_movies) {
+      state.recommend_movies = recommend_movies
     },
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
@@ -48,9 +52,23 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res, context)
-          // console.log(res.data)
           context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    getRecommend(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v1/movies/recommend/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res) => {
+          console.log(res.data.title)
+          context.commit('GET_RECOMMEND', res.data)
         })
         .catch((err) => {
           console.log(err)
